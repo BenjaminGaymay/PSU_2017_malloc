@@ -12,6 +12,7 @@
 #define ERROR 84
 #define SUCCESS 0
 #define HEXA "0123456789ABCDEF"
+#define DECI "0123456789"
 
 typedef struct s_malloc {
 	size_t size;
@@ -30,3 +31,5 @@ void my_putstr(char *);
 void my_putnbr(size_t size);
 void my_putbase(unsigned long, char *);
 void show_alloc_mem();
+
+extern t_malloc *g_list;

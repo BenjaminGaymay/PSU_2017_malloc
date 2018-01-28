@@ -27,8 +27,13 @@ void dump_list(t_malloc *list)
 	t_malloc *tmp;
 
 	tmp = list;
+	my_putstr("START\n\n");
 	while (tmp) {
-		// my_putnbr(tmp->size);
+		my_putstr("Size of the block : ");
+		my_putbase(tmp->size, DECI);
+		my_putstr("\nAddr of the block : 0x");
+		my_putbase((unsigned long)tmp->addr, HEXA);
+		my_putchar('\n');
 		my_putchar('\n');
 		tmp = tmp->next;
 	}

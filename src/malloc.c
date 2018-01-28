@@ -12,11 +12,12 @@ void *malloc(size_t size)
 	ptr = sbrk(size);
 	if (add_in_list(&g_list, size, ptr) == ERROR)
 		return (NULL);
-	// dump_list(g_list);
+	dump_list(g_list);
+	show_alloc_mem();
 	return (ptr);
 }
 
 void free(void *ptr)
 {
-	ptr = sbrk(-120);
+	return;
 }
