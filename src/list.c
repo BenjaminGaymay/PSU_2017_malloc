@@ -1,9 +1,9 @@
-//
-// EPITECH PROJECT, 2018
-// malloc
-// File description:
-// malloc
-//
+/*
+** EPITECH PROJECT, 2018
+** malloc
+** File description:
+** malloc
+*/
 
 #include "malloc.h"
 

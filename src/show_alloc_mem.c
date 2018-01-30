@@ -1,9 +1,9 @@
-//
-// EPITECH PROJECT, 2018
-// malloc
-// File description:
-// malloc
-//
+/*
+** EPITECH PROJECT, 2018
+** malloc
+** File description:
+** malloc
+*/
 
 #include "malloc.h"
 
@@ -23,5 +23,5 @@ void show_alloc_mem()
 	}
 	my_putbase(mdr, DECI);
 	my_putstr(" bytes\n");
-	
+
 }
