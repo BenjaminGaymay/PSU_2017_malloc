@@ -5,19 +5,36 @@ t_malloc *g_list;
 
 void *malloc(size_t size)
 {
-	void *ptr;
+	t_malloc *new;
+	t_malloc *mdr;
 
-	if (size == 0)
-		return (NULL);
-	ptr = sbrk(size);
-	if (add_in_list(&g_list, size, ptr) == ERROR)
-		return (NULL);
+	if (!g_list) {
+		new = create_block(NULL, size);
+		if (!new)
+			return (NULL);
+		g_list = new;
+	} else {
+		mdr = g_list;
+		new = find_block(&mdr, size);
+		if (new)
+			new->free = UNFREE;
+		else {
+			new = create_block(mdr, size);
+			if (!new)
+				return (NULL);
+		}
+	}
 	dump_list(g_list);
-	show_alloc_mem();
-	return (ptr);
+	// show_alloc_mem();
+	return (new + 1);
 }
 
 void free(void *ptr)
 {
-	return;
+	t_malloc *cheap;
+
+	if (!ptr)
+		return;
+	cheap = find_free(ptr);
+	cheap->free = FREE;
 }

@@ -13,6 +13,9 @@
 #define SUCCESS 0
 #define HEXA "0123456789ABCDEF"
 #define DECI "0123456789"
+#define UNFREE 0
+#define FREE 1
+#define SBRK_FAIL (void *) - 1
 
 typedef struct s_malloc {
 	size_t size;
@@ -25,6 +28,9 @@ int add_in_list(t_malloc **, size_t, void *);
 void dump_list(t_malloc *);
 void *malloc(size_t);
 void free(void *);
+t_malloc *find_block(t_malloc **, size_t);
+t_malloc *create_block(t_malloc *, size_t);
+t_malloc *find_free(void *);
 
 void my_putchar(char);
 void my_putstr(char *);
