@@ -68,5 +68,5 @@ t_malloc *create_block(t_malloc *list, size_t size)
 
 t_malloc *find_free(void *ptr)
 {
-	return ((t_malloc *)ptr-1);
+
 }

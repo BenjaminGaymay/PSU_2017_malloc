@@ -24,17 +24,12 @@ void *malloc(size_t size)
 				return (NULL);
 		}
 	}
-	dump_list(g_list);
+	// dump_list(g_list);
 	// show_alloc_mem();
 	return (new + 1);
 }
 
 void free(void *ptr)
 {
-	t_malloc *cheap;
-
-	if (!ptr)
-		return;
-	cheap = find_free(ptr);
-	cheap->free = FREE;
+	return;
 }
