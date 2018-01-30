@@ -35,6 +35,32 @@ void *malloc(size_t size)
 	return (new + 1);
 }
 
+void *realloc(void *ptr, size_t size)
+{
+        void *new;
+        char *tmp;
+        char *cpy;
+        t_malloc *meta_data;
+
+        if (! ptr)
+                return (NULL);
+
+        cpy = (char *)ptr;
+        meta_data = (t_malloc *)ptr - 1;
+
+        new = malloc(meta_data->size + size);
+        tmp = (char *)new;
+        if (! new)
+                return (NULL);
+
+        for (int i = meta_data->size ; i * sizeof(char) > 0 ; i--) {
+                *tmp = *cpy;
+                tmp++;
+                cpy++;
+        }
+        return (new);
+}
+
 void free(void *ptr)
 {
         if (! ptr)
