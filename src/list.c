@@ -48,7 +48,7 @@ t_malloc *find_block(t_malloc **list, size_t size)
 		*list = cur;
 		cur = cur->next;
 	}
-	return cur;
+	return (cur);
 }
 
 t_malloc *create_block(t_malloc *list, size_t size)
@@ -57,7 +57,7 @@ t_malloc *create_block(t_malloc *list, size_t size)
 
 	new = sbrk(size + sizeof(t_malloc));
 	if (new == SBRK_FAIL)
-		return NULL;
+		return (NULL);
 	if (list)
 		list->next = new;
 	new->size = size;

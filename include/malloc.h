@@ -19,7 +19,6 @@
 
 typedef struct s_malloc {
 	size_t size;
-	void *addr;
 	int free;
 	struct s_malloc *next;
 } t_malloc;

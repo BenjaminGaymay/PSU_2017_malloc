@@ -1,7 +1,7 @@
 #include <unistd.h>
 #include "malloc.h"
 
-t_malloc *g_list;
+t_malloc *g_list = NULL;
 
 void *malloc(size_t size)
 {
