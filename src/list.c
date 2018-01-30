@@ -7,22 +7,6 @@
 
 #include "malloc.h"
 
-int add_in_list(t_malloc **list, size_t size, void *addr)
-{
-	t_malloc *new;
-
-	new = sbrk(sizeof(*new));
-	if (new == SBRK_FAIL) {
-		return (ERROR);
-	}
-	new->size = size;
-	new->addr = addr;
-	new->free = UNFREE;
-	new->next = *list;
-	*list = new;
-	return (SUCCESS);
-}
-
 void dump_list(t_malloc *list)
 {
 	t_malloc *tmp;

@@ -23,7 +23,6 @@ typedef struct s_malloc {
 	struct s_malloc *next;
 } t_malloc;
 
-int add_in_list(t_malloc **, size_t, void *);
 void dump_list(t_malloc *);
 void *malloc(size_t);
 void free(void *);
