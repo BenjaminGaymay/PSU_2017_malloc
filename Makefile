@@ -27,7 +27,7 @@ $(NAME)	:	$(OBJS)
 all	:	$(NAME)
 
 test	:	
-		gcc -I ./include/ -Wall -Wextra -fPIC main.c
+		$(CC) main.c $(NAME)
 
 clean	:
 		$(RM) $(OBJS)

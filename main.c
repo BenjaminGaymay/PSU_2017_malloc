@@ -1,13 +1,14 @@
-// #include <stdio.h>
-#include "malloc.h"
-void show_alloc_mem();
+#include <stdlib.h>
+#include "./include/malloc.h"
+
 int main()
 {
-	char *mdr = malloc(120);
+	char *mdr = malloc(150);
 	mdr[0] = 'a';
 	mdr[1] = 'b';
 	mdr[2] = '\0';
-	// my_putstr(mdr);
+	my_putstr(mdr);
+	my_putchar('\n');
 	// printf("\n%s\n", mdr);
 	free(mdr);
 	show_alloc_mem();
