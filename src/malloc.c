@@ -58,6 +58,8 @@ void *realloc(void *ptr, size_t size)
                 tmp++;
                 cpy++;
         }
+
+        free(ptr);
         return (new);
 }
 
