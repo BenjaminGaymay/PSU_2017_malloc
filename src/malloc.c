@@ -31,5 +31,14 @@ void *malloc(size_t size)
 
 void free(void *ptr)
 {
+        if (! ptr)
+                return ;
+        t_malloc *tmp = find_free(ptr);
+
+        tmp->free = FREE;
+        // my_putstr("\nSize :\n");
+        // my_putbase(tmp->size, DECI);
+        // my_putstr("\nADDR :\n0x");
+        // my_putbase((unsigned long)tmp, HEXA);
 	return;
 }
