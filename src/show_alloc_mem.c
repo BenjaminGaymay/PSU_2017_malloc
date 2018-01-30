@@ -16,12 +16,16 @@ void show_alloc_mem()
 	my_putchar('\n');
 
 	tmp = g_list;
-	unsigned long mdr = 0;
 	while (tmp) {
-		mdr += tmp->size;
+		my_putstr("0x");
+		my_putbase((unsigned long)(tmp + 1), HEXA);
+		my_putstr(" - ");
+		my_putstr("0x");
+		my_putbase((unsigned long)(tmp + 1 + tmp->size), HEXA);
+		my_putstr(" : ");
+		my_putbase(tmp->size, DECI);
+		my_putstr(" bytes\n");
 		tmp = tmp->next;
 	}
-	my_putbase(mdr, DECI);
-	my_putstr(" bytes\n");
-
+	my_putstr("\n\n\n");
 }

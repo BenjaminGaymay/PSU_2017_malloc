@@ -14,4 +14,6 @@ echo "-- TESTS --\n"
 echo "- ls :\n"
 LD_PRELOAD="./libmy_malloc.so" ls --color=auto
 # echo "- ls -Rla:\n"
-# LD_PRELOAD="./libmy_malloc.so" ls -Rla /
+# LD_PRELOAD="./libmy_malloc.so" ls -Rla
+
+# gcc -I ./include/ -Wall -Wextra -fPIC main.c

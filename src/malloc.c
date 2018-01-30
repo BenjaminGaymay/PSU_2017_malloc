@@ -32,7 +32,6 @@ void *malloc(size_t size)
 		}
 	}
 	// dump_list(g_list);
-	// show_alloc_mem();
 	return (new + 1);
 }
 

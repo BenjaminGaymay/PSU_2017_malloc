@@ -26,6 +26,9 @@ $(NAME)	:	$(OBJS)
 
 all	:	$(NAME)
 
+test	:	
+		gcc -I ./include/ -Wall -Wextra -fPIC main.c
+
 clean	:
 		$(RM) $(OBJS)
 

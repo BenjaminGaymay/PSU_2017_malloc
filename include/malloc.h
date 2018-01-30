@@ -29,6 +29,7 @@ void free(void *);
 t_malloc *find_block(t_malloc **, size_t);
 t_malloc *create_block(t_malloc *, size_t);
 t_malloc *find_free(void *);
+void show_alloc_mem();
 
 void my_putchar(char);
 void my_putstr(char *);
