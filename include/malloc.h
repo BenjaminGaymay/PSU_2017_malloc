@@ -1,13 +1,13 @@
-//
-// EPITECH PROJECT, 2018
-// malloc
-// File description:
-// malloc
-//
+/*
+** EPITECH PROJECT, 2018
+** malloc
+** File description:
+** malloc
+*/
 
 #pragma once
 
-#include <unistd.h> 
+#include <unistd.h>
 
 #define ERROR 84
 #define SUCCESS 0
