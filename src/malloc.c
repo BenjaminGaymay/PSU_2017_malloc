@@ -55,7 +55,6 @@ void *realloc(void *ptr, size_t size)
         new = malloc(meta_data->size + size);
         if (! new)
                 return (ptr);
-
         new = memcpy(new, ptr, meta_data->size);
         free(ptr);
         return (new);
@@ -67,7 +66,6 @@ void *calloc(size_t nmemb, size_t size)
 
         if (! ptr)
                 return (NULL);
-
         return (memset(ptr, 0, size));
 }
 
