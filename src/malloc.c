@@ -15,6 +15,8 @@ void *malloc(size_t size)
 	t_malloc *new;
 	t_malloc *mdr;
 
+        if (size <= 0)
+                return (NULL);
 	if (!g_list) {
 		new = create_block(NULL, size);
 		if (!new)
@@ -31,7 +33,6 @@ void *malloc(size_t size)
 				return (NULL);
 		}
 	}
-	// dump_list(g_list);
 	return (new + 1);
 }
 
@@ -42,37 +43,36 @@ void *realloc(void *ptr, size_t size)
         char *cpy;
         t_malloc *meta_data;
 
-        if (! ptr)
+        if (! ptr) {
+                ptr = malloc(size);
+                return (ptr);
+        }
+        if (size == 0) {
+                free(ptr);
                 return (NULL);
-
+        }
         cpy = (char *)ptr;
         meta_data = (t_malloc *)ptr - 1;
-
         new = malloc(meta_data->size + size);
         tmp = (char *)new;
         if (! new)
-                return (NULL);
-
+                return (ptr);
         for (int i = meta_data->size ; i * sizeof(char) > 0 ; i--) {
                 *tmp = *cpy;
                 tmp++;
                 cpy++;
         }
-
+        // new = memcpy(new, ptr, meta_data->size);
         free(ptr);
         return (new);
 }
 
 void free(void *ptr)
 {
-        if (! ptr)
-                return ;
-        t_malloc *tmp = find_free(ptr);
+        t_malloc *tmp;
 
-        tmp->free = FREE;
-        // my_putstr("\nSize :\n");
-        // my_putbase(tmp->size, DECI);
-        // my_putstr("\nADDR :\n0x");
-        // my_putbase((unsigned long)tmp, HEXA);
-	return;
+        if (ptr) {
+                tmp = find_free(ptr);
+                tmp->free = FREE;
+        }
 }
