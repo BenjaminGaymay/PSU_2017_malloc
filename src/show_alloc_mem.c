@@ -27,5 +27,4 @@ void show_alloc_mem()
 		my_putstr(" bytes\n");
 		tmp = tmp->next;
 	}
-	my_putstr("\n\n\n");
 }
