@@ -6,6 +6,7 @@
 */
 
 #include <unistd.h>
+#include <string.h>
 #include "malloc.h"
 
 t_malloc *g_list = NULL;
@@ -39,8 +40,7 @@ void *malloc(size_t size)
 void *realloc(void *ptr, size_t size)
 {
         void *new;
-        char *tmp;
-        char *cpy;
+
         t_malloc *meta_data;
 
         if (! ptr) {
@@ -51,20 +51,24 @@ void *realloc(void *ptr, size_t size)
                 free(ptr);
                 return (NULL);
         }
-        cpy = (char *)ptr;
         meta_data = (t_malloc *)ptr - 1;
         new = malloc(meta_data->size + size);
-        tmp = (char *)new;
         if (! new)
                 return (ptr);
-        for (int i = meta_data->size ; i * sizeof(char) > 0 ; i--) {
-                *tmp = *cpy;
-                tmp++;
-                cpy++;
-        }
-        // new = memcpy(new, ptr, meta_data->size);
+
+        new = memcpy(new, ptr, meta_data->size);
         free(ptr);
         return (new);
+}
+
+void *calloc(size_t nmemb, size_t size)
+{
+        void *ptr = malloc(nmemb * size);
+
+        if (! ptr)
+                return (NULL);
+
+        return (memset(ptr, 0, size));
 }
 
 void free(void *ptr)
