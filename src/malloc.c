@@ -70,6 +70,7 @@ void free(void *ptr)
 	t_malloc *tmp;
 
 	if (ptr) {
+
 		tmp = (t_malloc *)ptr - 1;
 		tmp->free = FREE;
 		ptr = memset(ptr, 0, tmp->size);

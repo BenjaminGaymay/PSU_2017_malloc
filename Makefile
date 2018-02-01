@@ -22,7 +22,7 @@ CFLAGS	=	-I ./include/
 CFLAGS +=	-Wall -Wextra -fPIC
 
 $(NAME)	:	$(OBJS)
-		$(CC) $(CFLAGS) $(OBJS) -shared -o $(NAME)
+		$(CC) $(CFLAGS) $(OBJS) -shared -o $(NAME) -lpthread -D_REENTRANT
 
 all	:	$(NAME)
 
