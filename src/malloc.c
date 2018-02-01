@@ -7,25 +7,32 @@
 
 #include <unistd.h>
 #include <string.h>
+#include <pthread.h>
 #include "malloc.h"
 
 t_malloc *g_list = NULL;
+pthread_mutex_t g_thread;
 
 void *malloc(size_t size)
 {
 	t_malloc *new;
-
-	if (size <= 0)
+	pthread_mutex_lock(&g_thread);
+	if (size <= 0) {
+		pthread_mutex_unlock(&g_thread);
 		return (NULL);
+	}
 	new = find_block(&g_list, size);
 	if (new)
 		new->free = UNFREE;
 	else {
 		new = create_block(g_list, size);
-		if (!new)
+		if (!new) {
+			pthread_mutex_unlock(&g_thread);
 			return (NULL);
+		}
 		g_list = (!g_list ? new : g_list);
 	}
+	pthread_mutex_unlock(&g_thread);
 	return (new + 1);
 }
 
