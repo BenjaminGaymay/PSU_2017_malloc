@@ -40,19 +40,18 @@ void *malloc(size_t size)
 void *realloc(void *ptr, size_t size)
 {
         void *new;
-
         t_malloc *meta_data;
 
-        if (! ptr) {
-                ptr = malloc(size);
-                return (ptr);
-        }
+        if (! ptr)
+		return (malloc(size));
         if (size == 0) {
-                free(ptr);
-                return (NULL);
+		free(ptr);
+		return (NULL);
         }
         meta_data = (t_malloc *)ptr - 1;
-        new = malloc(meta_data->size + size);
+	if (size <= meta_data->size)
+		return (ptr);
+        new = malloc(size);
         if (! new)
                 return (ptr);
         new = memcpy(new, ptr, meta_data->size);
@@ -74,7 +73,7 @@ void free(void *ptr)
         t_malloc *tmp;
 
         if (ptr) {
-                tmp = find_free(ptr);
+		tmp = (t_malloc *)ptr - 1;
                 tmp->free = FREE;
         }
 }
