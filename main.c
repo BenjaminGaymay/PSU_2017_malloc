@@ -8,5 +8,6 @@ int main()
 	char *d = malloc(20);
 	char *e = malloc(200);
 	dump_list(g_list);
+	show_alloc_mem();
 	return 0;
 }
