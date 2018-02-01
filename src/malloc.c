@@ -22,7 +22,7 @@ void *malloc(size_t size)
 		pthread_mutex_unlock(&g_thread);
 		return (NULL);
 	}
-	new = find_block(&g_list, size);
+	new = find_block(size);
 	if (new)
 		new->free = UNFREE;
 	else {

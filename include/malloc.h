@@ -28,7 +28,7 @@ void *malloc(size_t);
 void *calloc(size_t, size_t);
 void *realloc(void *, size_t);
 void free(void *);
-t_malloc *find_block(t_malloc **, size_t);
+t_malloc *find_block(size_t);
 t_malloc *create_block(t_malloc *, size_t);
 t_malloc *find_free(void *);
 

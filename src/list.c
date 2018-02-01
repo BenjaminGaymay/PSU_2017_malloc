@@ -23,7 +23,7 @@ void dump_list(t_malloc *list)
 	}
 }
 
-t_malloc *find_block(t_malloc **list, size_t size)
+t_malloc *find_block(size_t size)
 {
 	t_malloc *cur = g_list;
 
@@ -38,12 +38,12 @@ t_malloc *find_block(t_malloc **list, size_t size)
 t_malloc *create_block(t_malloc *list, size_t size)
 {
 	t_malloc *new;
-	t_malloc *tmp = list;
+        t_malloc *tmp = list;
 
 	new = sbrk(size + sizeof(t_malloc));
 	if (new == SBRK_FAIL)
 		return (NULL);
-	if (list) {
+	if (tmp) {
 		while (tmp->next)
 			tmp = tmp->next;
 		tmp->next = new;
