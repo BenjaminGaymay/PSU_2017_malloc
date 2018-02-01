@@ -18,8 +18,7 @@ void dump_list(t_malloc *list)
 		my_putbase(tmp->size, DECI);
 		my_putstr("\nAddr of the block : 0x");
 		my_putbase((unsigned long)tmp, HEXA);
-		my_putchar('\n');
-		my_putchar('\n');
+		my_putstr("\n\n");
 		tmp = tmp->next;
 	}
 }

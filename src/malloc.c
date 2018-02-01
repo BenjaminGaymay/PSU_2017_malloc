@@ -16,6 +16,7 @@ pthread_mutex_t g_thread;
 void *malloc(size_t size)
 {
 	t_malloc *new;
+
 	pthread_mutex_lock(&g_thread);
 	if (size <= 0) {
 		pthread_mutex_unlock(&g_thread);
