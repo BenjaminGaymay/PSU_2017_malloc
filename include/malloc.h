@@ -19,8 +19,9 @@
 
 typedef struct s_malloc {
 	size_t size;
+        struct s_malloc *next;
 	int free;
-	struct s_malloc *next;
+        int uggly;
 } t_malloc;
 
 void dump_list(t_malloc *);

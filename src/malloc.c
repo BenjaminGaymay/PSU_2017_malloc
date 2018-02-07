@@ -17,11 +17,10 @@ void *malloc(size_t size)
 {
 	t_malloc *new;
 
-	pthread_mutex_lock(&g_thread);
 	if (size <= 0) {
-		pthread_mutex_unlock(&g_thread);
 		return (NULL);
 	}
+        pthread_mutex_lock(&g_thread);
 	new = find_block(size);
 	if (new)
 		new->free = UNFREE;
@@ -71,9 +70,9 @@ void free(void *ptr)
 	t_malloc *tmp;
 
 	if (ptr) {
-
+                pthread_mutex_lock(&g_thread);
 		tmp = (t_malloc *)ptr - 1;
 		tmp->free = FREE;
-		ptr = memset(ptr, 0, tmp->size);
+                pthread_mutex_unlock(&g_thread);
 	}
 }
