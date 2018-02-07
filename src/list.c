@@ -50,6 +50,6 @@ t_malloc *create_block(t_malloc *list, size_t size)
 	}
 	new->size = size;
 	new->next = NULL;
-	new->free = UNFREE;
+	new->free = NOTFREE;
 	return (new);
 }

@@ -7,7 +7,7 @@
 
 #include "malloc.h"
 
-void show_alloc_mem()
+void show_alloc_mem(void)
 {
 	t_malloc *tmp;
 

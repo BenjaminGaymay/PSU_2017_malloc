@@ -13,7 +13,7 @@
 #define SUCCESS 0
 #define HEXA "0123456789ABCDEF"
 #define DECI "0123456789"
-#define UNFREE 0
+#define NOTFREE 0
 #define FREE 1
 #define SBRK_FAIL (void *) - 1
 
@@ -37,6 +37,6 @@ void my_putchar(char);
 void my_putstr(char *);
 void my_putnbr(size_t size);
 void my_putbase(unsigned long, char *);
-void show_alloc_mem();
+void show_alloc_mem(void);
 
 extern t_malloc *g_list;

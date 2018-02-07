@@ -17,13 +17,13 @@ void *malloc(size_t size)
 {
 	t_malloc *new;
 
-	if (size <= 0) {
+	if (size <= 0)
 		return (NULL);
-	}
+	// size = (size - 1) / 4 * 4 + 4;
         pthread_mutex_lock(&g_thread);
 	new = find_block(size);
 	if (new)
-		new->free = UNFREE;
+		new->free = NOTFREE;
 	else {
 		new = create_block(g_list, size);
 		if (!new) {
