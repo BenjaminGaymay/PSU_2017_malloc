@@ -26,7 +26,7 @@ void my_putstr(char *s)
 	write(1, s, my_strlen(s));
 }
 
-void	my_putbase(unsigned long nb, char *base)
+void my_putbase(unsigned long nb, char *base)
 {
 	unsigned long base_len;
 	unsigned long i;
