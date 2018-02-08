@@ -21,7 +21,8 @@ void show_alloc_mem(void)
 		my_putbase((unsigned long)(tmp + 1), HEXA);
 		my_putstr(" - ");
 		my_putstr("0x");
-		my_putbase((unsigned long)((size_t)(tmp + 1) + tmp->size), HEXA);
+		my_putbase((unsigned long)((size_t)(tmp + 1) + tmp->size),
+		 HEXA);
 		my_putstr(" : ");
 		my_putbase(tmp->size, DECI);
 		my_putstr(" bytes\n");
