@@ -14,6 +14,7 @@ RM	=	rm -f
 SRCS	=	./src/malloc.c		\
 		./src/list.c		\
 		./src/useful.c		\
+		./src/free.c		\
 		./src/show_alloc_mem.c
 
 OBJS	=	$(SRCS:.c=.o)

@@ -5,13 +5,11 @@
 ** malloc
 */
 
-#include <unistd.h>
 #include <string.h>
-#include <pthread.h>
 #include "malloc.h"
 
+pthread_mutex_t g_thread = PTHREAD_MUTEX_INITIALIZER;
 t_malloc *g_list = NULL;
-pthread_mutex_t g_thread;
 
 void *malloc(size_t size)
 {
@@ -19,7 +17,6 @@ void *malloc(size_t size)
 
 	if (size <= 0)
 		return (NULL);
-	// size = (size - 1) / 4 * 4 + 4;
         pthread_mutex_lock(&g_thread);
 	new = find_block(size);
 	if (new)
@@ -63,16 +60,4 @@ void *calloc(size_t nmemb, size_t size)
 	void *ptr = malloc(nmemb * size);
 
 	return (!ptr ? NULL : memset(ptr, 0, size));
-}
-
-void free(void *ptr)
-{
-	t_malloc *tmp;
-
-	if (ptr) {
-                pthread_mutex_lock(&g_thread);
-		tmp = (t_malloc *)ptr - 1;
-		tmp->free = FREE;
-                pthread_mutex_unlock(&g_thread);
-	}
 }
