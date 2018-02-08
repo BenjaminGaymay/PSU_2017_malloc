@@ -17,6 +17,7 @@ void *malloc(size_t size)
 
 	if (size <= 0)
 		return (NULL);
+
         pthread_mutex_lock(&g_thread);
 	new = find_block(size);
 	if (new)

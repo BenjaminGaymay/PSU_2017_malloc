@@ -24,7 +24,7 @@ typedef struct s_malloc {
 	struct s_malloc *prev;
 	size_t size;
 	int free;
-        int uggly;
+	int uggly;
 } t_malloc;
 
 void dump_list(t_malloc *);
