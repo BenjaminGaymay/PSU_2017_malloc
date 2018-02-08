@@ -34,7 +34,7 @@ void free(void *ptr)
                 pthread_mutex_lock(&g_thread);
 		tmp = (t_malloc *)ptr - 1;
 		tmp->free = FREE;
-		// merge_free(tmp);
+		merge_free(tmp);
                 pthread_mutex_unlock(&g_thread);
 	}
 }
